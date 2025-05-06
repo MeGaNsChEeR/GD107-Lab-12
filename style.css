@@ -27,12 +27,12 @@ body {
   text-align: center;
   font-size: 30px;
 }
+/* search container */
 .search-container{
   width: 490px;
   display: block;
   margin: 0 auto;
 }
-
 input#search-bar{
   margin: 0 auto;
   width: 108%;
@@ -49,6 +49,7 @@ input#search-bar{
       transition: opacity 0.45s ease; 
   	  opacity: 0;
      }
+
     &::-moz-placeholder {
       transition: opacity 0.45s ease; 
   	  opacity: 0;
@@ -69,6 +70,7 @@ input#search-bar{
   right: -45px;
 }
 
+/* button */
 button {
   border: 0;
   background-color: white;
@@ -90,7 +92,6 @@ button {
     border-style: solid;
     border-width: 0 0 1px 0;
   }
-
   &:hover {
     background-color: #cccccc;
   }
@@ -100,7 +101,6 @@ button {
 .seen:after {
   bottom: 45%;
 }
-
 .seen .seen:before {
   border-bottom-width: 1px;
 }
@@ -109,7 +109,6 @@ button {
 .search:before {
   box-shadow: 40px -40px 0px -8px rgba(0, 0, 0, 1);
 }
-
 .search:before,
 .search:before{
   width: 15px;
@@ -118,7 +117,6 @@ button {
   border-style: solid;
   border-width: 2px 1px 1px 1px;
 }
-
 .maximized:after {
   position: absolute;
   top: 7px;
@@ -131,18 +129,15 @@ button {
   border-width: 2px 1px 1px 1px;
   z-index: -1;
 }
-
 .found:before,
 .found:after {
   border-bottom-width: 1px;
   bottom: 50%;
   top: 50%;
 }
-
 .close:before {
   transform: rotate(45deg);
 }
-
 .close:after {
   transform: rotate(-45deg);
 }
@@ -150,23 +145,23 @@ button {
 .close:hover {
   background-color: #e04343;
 }
-
 .close:hover:before,
 .close:hover:after {
   border-color: #ffffff;
 }
 h2{
-  text-align:left;
+  text-align:center;
   color:teal;
   margin:0 0 40px 0;
   text-shadow: 1px 1px 2px #3d3d3d;
+  text-color:black;
 }
 .image_description{
   width: 715px;
   height: 175px;
   display:block;
-  float:left;
-  transition: box-shadow 0.3s;
+  float:center;
+  transition: box-shadow 0.9s;
   border:1px solid #F8F8F8;
   background-color: #F8F8F8;
   margin:0;
@@ -216,27 +211,26 @@ h2{
   max-height: 80px;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  text-color:black;
 }
 .labels span{
   float:left;
   color:green;
   font-weight:bold;
   cursor:pointer;
+  text-color:black;
+}
+.label {
+  text-color:black;
 }
 .labels a{
   color:red;
   float: right;
   font-weight:bold;
-  text-decoration:none;
+  text-decoration:box;
+  text-color:black;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
 .input-field {
   position: relative;
 }
@@ -260,9 +254,10 @@ h2{
   font-size: 19px;
   pointer-events: none;
   transition: 0.3s;
+  text-color:black;
 }
 input:focus {
-  border: 2px solid rgb(128, 139, 134);
+  border: 7px solid rgb(128, 139, 134);
 }
 input:focus ~ label,
 input:valid ~ label {
@@ -271,4 +266,138 @@ input:valid ~ label {
   font-size: 16px;
   padding: 0 2px;
   background: #353842;
+  text-color:black;
+}
+
+
+//This is all the styling you need for the button
+.m-backtotop {
+    @include transition(all 0.3s ease-in-out);
+    position: fixed;
+    bottom: -50px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #222;
+    border-radius: 25px;
+    text-align: center;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    overflow: hidden;
+		color:#fff;
+
+    &.active {
+      bottom: 15px;
+      opacity: 1;
+    }
+
+    & > div {
+      @include transition(all 0.3s ease-in-out);
+      &.arrow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        opacity: 1;
+      }
+      &.text {
+        @include font-size(0.5, 1);
+        text-transform: uppercase;
+        font-weight: 900;
+        font-family: $f-body;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(50%) translateX(-50%);
+        opacity: 0;
+        margin-top: 1px;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+			bottom:20px;
+      cursor: pointer;
+      background: darken(#222, 15%);
+			box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+
+      & > div {
+        &.arrow {
+          transform: translateY(-150%) translateX(-50%);
+          opacity: 0;
+        }
+        &.text {
+          transform: translateY(-50%) translateX(-50%);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+
+/* Button */
+.btn {
+  background: transparent;
+  width: 200px;
+  position: relative;
+  padding: 15px;
+  color: #1ECD97;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 500ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  border-radius: 4px;
+  font-weight: 600;
+  overflow: hidden;
+  border: 2px solid #1ECD97;
+  text-decoration: none;
+}
+
+/* In Progress Button */
+.btn-progress {
+  width: 150px;
+  color: transparent;
+}
+
+.btn-fill:after {
+  content: '';
+  background: #1ECD97;
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0;
+  display: block;
+  animation: fill 3.2s linear forwards;
+}
+
+/* Button Complete */
+.btn-complete {
+  padding: 10px;
+  width: 50px;
+  color: #fff;
+  pointer-events: none;
+}
+
+.btn-complete:after {
+  font-family: FontAwesome;
+  content: "\f00c";
+  color: #fff;
+  height: 100%;
+  padding-left: 3px;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1ECD97;
+}
+
+/* Animation */
+@keyframes fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
